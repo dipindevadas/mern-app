@@ -8,7 +8,7 @@ const User = require("./models/User");
 const bcryp = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 app.use(
   cors({
     origin: ["https://mern-app-new.netlify.app"],
@@ -58,7 +58,7 @@ function authenticateToken(req, res, next) {
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
   }
-  jwt.verify(token, "secret123", (err, user) => {
+  jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
     if (err) {
       return res.status(403).json({ message: "Invalid token" });
     }
@@ -73,7 +73,7 @@ const verifyUser = (req, res, next) => {
   if (!token) {
     return res.json("token is not found");
   } else {
-    jwt.verify(token, "secret123", (err, decode) => {
+    jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
       if (err) {
         return res.json("token is wrong");
       }
@@ -114,13 +114,13 @@ app.post("/api/login", async (req, res) => {
     if (user) {
       const passwordMatch = await bcryp.compare(password, user.password);
       if (passwordMatch) {
-        const token = jwt.sign({ email: user.email }, "secret123", {
+        const token = jwt.sign({ email: user.email }, process.env.SECRET_KEY, {
           expiresIn: "1d",
         });
         res.cookie("token", token, {
           httpOnly: true,
           maxAge: 24 * 60 * 60 * 1000,
-        }); // This sets a cookie named 'token' with the provided token
+        });
 
         res
           .status(200)
