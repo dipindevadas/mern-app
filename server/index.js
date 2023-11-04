@@ -21,7 +21,7 @@ app.use("/files", express.static("files"));
 app.use(express.json());
 app.use(cookieParser());
 
-const mongoDBUrl = process.env.MONGODB_URI;
+const mongoDBUrl = process.env.DATABASE;
 
 mongoose
   .connect(mongoDBUrl, { useNewUrlParser: true, useUnifiedTopology: true })
