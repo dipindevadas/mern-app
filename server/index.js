@@ -11,7 +11,7 @@ const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv").config();
 app.use(
   cors({
-    origin: ["http://localhost:3001"],
+    origin: ["https://mern-app-new.netlify.app"],
     credentials: true,
     methods: ["get", "post"],
   })
