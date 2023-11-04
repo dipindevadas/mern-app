@@ -54,7 +54,7 @@ const PdfSchema = mongoose.model("PdfDetails");
 const upload = multer({ storage: storage });
 
 function authenticateToken(req, res, next) {
-  const token = req.cookies.token; // Assuming you send the token in the 'Authorization' header
+  const token = req.cookie.token; // Assuming you send the token in the 'Authorization' header
   if (!token) {
     return res.status(401).json({ message: "Unauthorized" });
   }
@@ -68,7 +68,7 @@ function authenticateToken(req, res, next) {
 }
 
 const verifyUser = (req, res, next) => {
-  const token = req.cookies.token;
+  const token = req.cookie.token;
   console.log("token", token);
   if (!token) {
     return res.json("token is not found");
