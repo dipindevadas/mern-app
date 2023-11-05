@@ -121,6 +121,7 @@ app.post("/api/login", async (req, res) => {
           httpOnly: true,
           expires: new Date(Date.now() + 25892000000),
           maxAge: 24 * 60 * 60 * 1000,
+          path: "/",
         });
 
         res
