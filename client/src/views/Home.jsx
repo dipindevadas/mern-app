@@ -32,7 +32,11 @@ function Home() {
 
   useEffect(()=>{
     axios.defaults.withCredentials = true
-    axios.get('https://mern-app-sw0g.onrender.com/home').then((res)=>{
+    axios.get('https://mern-app-sw0g.onrender.com/home',{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }).then((res)=>{
 
       if(res.data !== 'success'){
         Navigate('/login')
