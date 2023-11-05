@@ -17,7 +17,7 @@ function Register() {
   const registerForm=async (e)=>{
     e.preventDefault()
 
-    const result = await axios.post('http://localhost:5000/api/register',{
+    const result = await axios.post('https://mern-app-sw0g.onrender.com/api/register',{
       name: name,
       email:email,
       password:password

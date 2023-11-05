@@ -18,7 +18,7 @@ function Login() {
   const loginForm= async(e)=>{
     e.preventDefault()
 
-      const result = await axios.post('http://localhost:5000/api/login',{
+      const result = await axios.post('https://mern-app-sw0g.onrender.com/api/login',{
         email:email,
         password:password
       }).then((res)=>{

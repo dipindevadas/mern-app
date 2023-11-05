@@ -119,6 +119,7 @@ app.post("/api/login", async (req, res) => {
         });
         res.cookie("token", token, {
           httpOnly: true,
+          expires: new Date(Date.now() + 25892000000),
           maxAge: 24 * 60 * 60 * 1000,
         });
 

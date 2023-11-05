@@ -67,7 +67,7 @@ function PdfComp(props) {
     try {
 
 
-      const response = await axios.post("http://localhost:5000/extract-pages-and-create-pdf", {
+      const response = await axios.post("https://mern-app-sw0g.onrender.com/extract-pages-and-create-pdf", {
         pdfFile: props.pdfFile,
         selectedPages,
       });

@@ -32,7 +32,7 @@ function Home() {
 
   useEffect(()=>{
     axios.defaults.withCredentials = true
-    axios.get('http://localhost:5000/home').then((res)=>{
+    axios.get('https://mern-app-sw0g.onrender.com/home').then((res)=>{
 
       if(res.data !== 'success'){
         Navigate('/login')
@@ -55,7 +55,7 @@ function Home() {
       "X-User-Id": userId,
     };
     const result = await axios
-      .get("http://localhost:5000/get-files",{
+      .get("https://mern-app-sw0g.onrender.com/get-files",{
       headers
       })
       .then((res) => {
@@ -68,7 +68,7 @@ function Home() {
   };
 
   const showPdf = async (pdf) => {
-    setPdfData(`http://localhost:5000/files/${pdf}`);
+    setPdfData(`https://mern-app-sw0g.onrender.com/files/${pdf}`);
   };
 
   //File uploading api
@@ -103,7 +103,7 @@ function Home() {
       const token = localStorage.getItem("token");
 
       const result = await axios.post(
-        "http://localhost:5000/upload-files",
+        "https://mern-app-sw0g.onrender.com/upload-files",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
